@@ -87,7 +87,7 @@ export default function GigaLauncherPage() {
           <GigaLogo width={140} height={66} />
         </div>
         <p className="text-[16px] leading-[24px] text-muted-foreground m-0 w-full max-w-[560px]">
-          Select your vibecoding tool and start developing your app using the Giga Design System
+          Start developing your app using the Giga Design System
         </p>
       </header>
 
