@@ -102,7 +102,7 @@ const TOOLS = [
   {
     id: "v0",
     name: "v0",
-    desc: "For the most accurate UI",
+    desc: "For pixel-accurate UI",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M12 2L2 22H22L12 2Z" fill="currentColor"/>

@@ -145,9 +145,18 @@ RULES: 1) Only Manrope+Open Sans 2) shadcn/ui vanilla themed via CSS vars 3) Nex
       { id: "cursor", name: "Cursor", desc: "Best for real projects", logoUrl: "https://cursor.com/favicon.ico", badge: "COPIES PROMPT", getUrl: () => null, action: "clipboard" },
       { id: "claude", name: "Claude", desc: "For complex reasoning", logoUrl: "https://claude.ai/favicon.ico", badge: null, getUrl: () => `https://claude.ai/new?q=${encodeURIComponent(GIGA_PROMPT + "\n\n" + GREETING)}`, action: "open" },
       { id: "lovable", name: "Lovable", desc: "Full-stack AI Builder", logoUrl: "https://lovable.dev/favicon.ico", badge: null, getUrl: () => `https://lovable.dev/?autosubmit=true#prompt=${encodeURIComponent(GIGA_PROMPT + "\n\n" + LOVABLE_EXTRA + "\n\n" + GREETING)}`, action: "open" },
-      { id: "v0", name: "v0", desc: "For the most accurate UI", logoUrl: "https://www.google.com/s2/favicons?domain=v0.dev&sz=128", badge: null, getUrl: () => `https://v0.dev/chat?q=${encodeURIComponent(GIGA_PROMPT + "\n\n" + GREETING)}`, action: "open" },
+      { id: "v0", name: "v0", desc: "For pixel-accurate UI", logoUrl: "https://www.google.com/s2/favicons?domain=v0.dev&sz=128", badge: null, getUrl: () => `https://v0.dev/chat?q=${encodeURIComponent(GIGA_PROMPT + "\n\n" + GREETING)}`, action: "open" },
       { id: "antigravity", name: "Antigravity", desc: "Google's agent-first IDE", logoUrl: "https://antigravity.google/favicon.ico", badge: "COPIES PROMPT", getUrl: () => null, action: "open_and_copy" },
+      { id: "download_md", name: "Download .md file", desc: "Get the design system as .md file", logoUrl: null, badge: null, getUrl: () => null, action: "download_md" },
     ];
+
+    const DOWNLOAD_ICON = (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <polyline points="7 10 12 15 17 10" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <line x1="12" y1="15" x2="12" y2="3" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    );
 
     function Toast({ show, message }) {
       return (
@@ -197,7 +206,7 @@ RULES: 1) Only Manrope+Open Sans 2) shadcn/ui vanilla themed via CSS vars 3) Nex
           }}
         >
           <div style={{ width: 36, height: 36, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", borderRadius: 6 }}>
-            <img src={tool.logoUrl} alt="" style={{ width: 28, height: 28, objectFit: "contain" }} />
+            {tool.action === "download_md" ? DOWNLOAD_ICON : <img src={tool.logoUrl} alt="" style={{ width: 28, height: 28, objectFit: "contain" }} />}
           </div>
           <div style={{ flex: 1, minWidth: 0, width: "100%" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", fontFamily: "Manrope, sans-serif" }}>
@@ -247,13 +256,8 @@ RULES: 1) Only Manrope+Open Sans 2) shadcn/ui vanilla themed via CSS vars 3) Nex
             showToast("Could not copy — check clipboard permissions");
           }
         }
-        const url = tool.getUrl();
-        if (url) { window.open(url, "_blank"); }
-        setLaunching(null);
-      }, [showToast]);
-
-      const downloadMarkdown = useCallback(() => {
-        const md = `# Giga Product Design System — Prompt for vibecoding tools
+        if (tool.action === "download_md") {
+          const md = `# Giga Product Design System — Prompt for vibecoding tools
 
 Use the content below as system instructions or custom instructions in your vibecoding tool (Cursor, Claude, Lovable, etc.).
 
@@ -261,13 +265,19 @@ Use the content below as system instructions or custom instructions in your vibe
 ${GIGA_PROMPT}
 \`\`\`
 `;
-        const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "giga-design-system.md";
-        a.click();
-        URL.revokeObjectURL(a.href);
-        showToast("File .md scaricato");
+          const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "giga-design-system.md";
+          a.click();
+          URL.revokeObjectURL(a.href);
+          showToast("File .md scaricato");
+          setLaunching(null);
+          return;
+        }
+        const url = tool.getUrl();
+        if (url) { window.open(url, "_blank"); }
+        setLaunching(null);
       }, [showToast]);
 
       return (
@@ -300,14 +310,6 @@ ${GIGA_PROMPT}
                   </span>
                 ))}
               </div>
-              <button
-                type="button"
-                onClick={downloadMarkdown}
-                className="giga-footer-link"
-                style={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 500, fontSize: 14, color: "var(--primary)", background: "none", border: "none", cursor: "pointer", padding: 0, textDecoration: "none" }}
-              >
-                Scarica .md
-              </button>
               <p style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 12, lineHeight: "18px", color: "var(--muted-foreground)", margin: 0, opacity: 0.8 }}>
                 Giga Product Design System · shadcn/ui · Next.js
               </p>
