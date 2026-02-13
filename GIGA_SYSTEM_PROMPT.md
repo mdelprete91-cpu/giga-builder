@@ -26,7 +26,7 @@ After init, replace/merge `globals.css` and `tailwind.config` with the **Giga** 
 
 Only two font families are allowed. No exceptions.
 
-- **Manrope** → headings only (text-2xl through text-9xl), weight 400 only
+- **Manrope** → headings only (text-2xl through text-9xl), weight 500 only
 - **Open Sans** → everything else (text-xs through text-xl), weights: 400 Regular, 500 Medium, 600 Semibold
 
 Import: `@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');`
@@ -42,7 +42,7 @@ Import: `@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;
 
 ## TYPOGRAPHY SCALE
 
-### Headings (Manrope, weight 400 only)
+### Headings (Manrope, weight 500 only)
 | Token | Size | Line Height | Letter Spacing |
 |-------|------|-------------|----------------|
 | text-9xl | 128px | 136px | -1px |

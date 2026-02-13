@@ -6,7 +6,7 @@ import { useState, useEffect, useCallback } from "react";
 const GIGA_PROMPT = `You are building a product using the Giga Product Design System. Every UI element MUST follow these rules exactly. Use shadcn/ui components (vanilla, installed via npx shadcn@latest add) with Giga token customization applied through CSS variables and Tailwind config. Stack: Next.js + React + Tailwind CSS + shadcn/ui.
 
 FONTS — Only two allowed, no exceptions:
-Manrope → headings (text-2xl to text-9xl), weight 400 only
+Manrope → headings (text-2xl to text-9xl), weight 500 only
 Open Sans → everything else (text-xs to text-xl), weights: 400, 500, 600
 Import: @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
 
@@ -16,7 +16,7 @@ FONT WEIGHT RULES:
 600 Semibold → Section titles, leading headers
 
 TYPOGRAPHY SCALE:
-Headings (Manrope 400): text-9xl:128/136/-1px | text-8xl:96/104 | text-7xl:72/80 | text-6xl:60/68 | text-5xl:48/56 | text-4xl:36/42 | text-3xl:30/36 | text-2xl:24/36
+Headings (Manrope 500): text-9xl:128/136/-1px | text-8xl:96/104 | text-7xl:72/80 | text-6xl:60/68 | text-5xl:48/56 | text-4xl:36/42 | text-3xl:30/36 | text-2xl:24/36
 Body (Open Sans 400/500/600): text-xl:20/30 | text-lg:18/28 | text-base:16/24 | text-sm:14/20 | text-xs:12/18
 
 COLORS:
@@ -329,14 +329,14 @@ export default function GigaLauncher() {
               boxShadow: "0 4px 16px rgba(39,122,255,0.25)",
             }}>
               <span style={{
-                fontFamily: "'Manrope', sans-serif", fontWeight: 400,
+                fontFamily: "'Manrope', sans-serif", fontWeight: 500,
                 fontSize: 20, color: "#fff",
               }}>
                 G
               </span>
             </div>
             <h2 style={{
-              fontFamily: "'Manrope', sans-serif", fontWeight: 400,
+              fontFamily: "'Manrope', sans-serif", fontWeight: 500,
               fontSize: 24, lineHeight: "36px", color: "#161616", margin: 0,
             }}>
               Giga Launcher

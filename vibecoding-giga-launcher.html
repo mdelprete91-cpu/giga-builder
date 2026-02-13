@@ -83,7 +83,7 @@
     const GIGA_PROMPT = `You are building a product using the Giga Product Design System. Every UI element MUST follow these rules exactly. Use shadcn/ui components (vanilla, installed via npx shadcn@latest add) with Giga token customization applied through CSS variables and Tailwind config. Stack: Next.js + React + Tailwind CSS + shadcn/ui.
 
 FONTS — Only two allowed, no exceptions:
-Manrope → headings (text-2xl to text-9xl), weight 400 only
+Manrope → headings (text-2xl to text-9xl), weight 500 only
 Open Sans → everything else (text-xs to text-xl), weights: 400, 500, 600
 Import: @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
 
@@ -93,7 +93,7 @@ FONT WEIGHT RULES:
 600 Semibold → Section titles, leading headers
 
 TYPOGRAPHY SCALE:
-Headings (Manrope 400): text-9xl:128/136/-1px | text-8xl:96/104 | text-7xl:72/80 | text-6xl:60/68 | text-5xl:48/56 | text-4xl:36/42 | text-3xl:30/36 | text-2xl:24/36
+Headings (Manrope 500): text-9xl:128/136/-1px | text-8xl:96/104 | text-7xl:72/80 | text-6xl:60/68 | text-5xl:48/56 | text-4xl:36/42 | text-3xl:30/36 | text-2xl:24/36
 Body (Open Sans 400/500/600): text-xl:20/30 | text-lg:18/28 | text-base:16/24 | text-sm:14/20 | text-xs:12/18
 
 COLORS:
@@ -252,6 +252,24 @@ RULES: 1) Only Manrope+Open Sans 2) shadcn/ui vanilla themed via CSS vars 3) Nex
         setLaunching(null);
       }, [showToast]);
 
+      const downloadMarkdown = useCallback(() => {
+        const md = `# Giga Product Design System — Prompt for vibecoding tools
+
+Use the content below as system instructions or custom instructions in your vibecoding tool (Cursor, Claude, Lovable, etc.).
+
+\`\`\`
+${GIGA_PROMPT}
+\`\`\`
+`;
+        const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "giga-design-system.md";
+        a.click();
+        URL.revokeObjectURL(a.href);
+        showToast("File .md scaricato");
+      }, [showToast]);
+
       return (
         <>
           <div style={{
@@ -282,6 +300,14 @@ RULES: 1) Only Manrope+Open Sans 2) shadcn/ui vanilla themed via CSS vars 3) Nex
                   </span>
                 ))}
               </div>
+              <button
+                type="button"
+                onClick={downloadMarkdown}
+                className="giga-footer-link"
+                style={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 500, fontSize: 14, color: "var(--primary)", background: "none", border: "none", cursor: "pointer", padding: 0, textDecoration: "none" }}
+              >
+                Scarica .md
+              </button>
               <p style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 12, lineHeight: "18px", color: "var(--muted-foreground)", margin: 0, opacity: 0.8 }}>
                 Giga Product Design System · shadcn/ui · Next.js
               </p>

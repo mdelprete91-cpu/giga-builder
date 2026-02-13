@@ -163,14 +163,14 @@
 
 /* ─── TEXT STYLE UTILITIES (1:1 Figma) ─── */
 @layer utilities {
-  .text-9xl { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 128px; line-height: 136px; letter-spacing: -1px; }
-  .text-8xl { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 96px;  line-height: 104px; }
-  .text-7xl { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 72px;  line-height: 80px; }
-  .text-6xl { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 60px;  line-height: 68px; }
-  .text-5xl { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 48px;  line-height: 56px; }
-  .text-4xl { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 36px;  line-height: 42px; }
-  .text-3xl { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 30px;  line-height: 36px; }
-  .text-2xl { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 24px;  line-height: 36px; }
+  .text-9xl { font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 128px; line-height: 136px; letter-spacing: -1px; }
+  .text-8xl { font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 96px;  line-height: 104px; }
+  .text-7xl { font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 72px;  line-height: 80px; }
+  .text-6xl { font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 60px;  line-height: 68px; }
+  .text-5xl { font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 48px;  line-height: 56px; }
+  .text-4xl { font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 36px;  line-height: 42px; }
+  .text-3xl { font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 30px;  line-height: 36px; }
+  .text-2xl { font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 24px;  line-height: 36px; }
 
   .text-xl          { font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 20px; line-height: 30px; }
   .text-xl-medium   { font-family: 'Open Sans', sans-serif; font-weight: 500; font-size: 20px; line-height: 30px; }
